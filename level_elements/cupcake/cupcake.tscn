@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://t8ditsuac713"]
+
+[ext_resource type="Script" uid="uid://bgwtk2m3ohpl1" path="res://level_elements/cupcake/cupcake.gd" id="1_6dgog"]
+[ext_resource type="Texture2D" uid="uid://bkdsfq0cp115y" path="res://level_elements/cupcake/cupcake.png" id="1_82kva"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_82kva"]
+radius = 8.0
+
+[node name="Cupcake" type="Node2D"]
+script = ExtResource("1_6dgog")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_82kva")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 262
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_82kva")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
