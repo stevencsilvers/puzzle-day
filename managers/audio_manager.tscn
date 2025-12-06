@@ -1,0 +1,104 @@
+[gd_scene load_steps=16 format=3 uid="uid://dmn31tfxla32e"]
+
+[ext_resource type="Script" uid="uid://xbjiixb3kds" path="res://managers/audio_manager.gd" id="1_1k0gc"]
+[ext_resource type="AudioStream" uid="uid://ddcj4hvogbhon" path="res://sounds/jump.wav" id="2_o384a"]
+[ext_resource type="Script" uid="uid://bgxo1vj3phnp7" path="res://sounds/audio_stream_player_plus.gd" id="3_0tahm"]
+[ext_resource type="AudioStream" uid="uid://dgn840rhbi11d" path="res://sounds/button_on.wav" id="4_rhkck"]
+[ext_resource type="AudioStream" uid="uid://c8x33ywu3cvat" path="res://sounds/block_move_on.wav" id="4_yaisj"]
+[ext_resource type="AudioStream" uid="uid://clo3cferplnto" path="res://sounds/block_move_off.wav" id="5_201by"]
+[ext_resource type="AudioStream" uid="uid://8p8yilfroonl" path="res://sounds/button_off.wav" id="5_rhkck"]
+[ext_resource type="AudioStream" uid="uid://brn0eq2qgxlug" path="res://sounds/poof.wav" id="6_201by"]
+[ext_resource type="AudioStream" uid="uid://5ggmh3y7vasv" path="res://sounds/point.wav" id="7_gicor"]
+[ext_resource type="AudioStream" uid="uid://5fq6b6wbcwcg" path="res://sounds/rubberduck.wav" id="9_ydcbx"]
+[ext_resource type="AudioStream" uid="uid://b77doxjjdxjy2" path="res://sounds/chomp.wav" id="10_rhkck"]
+[ext_resource type="AudioStream" uid="uid://dfvp3xesgw1mi" path="res://sounds/footstep.wav" id="11_gicor"]
+[ext_resource type="AudioStream" uid="uid://diphvkadbonv6" path="res://sounds/push_oscar.wav" id="12_f4f00"]
+[ext_resource type="AudioStream" uid="uid://btm3y71w7u8ld" path="res://sounds/zapslat.mp3" id="13_tqr3v"]
+[ext_resource type="AudioStream" uid="uid://bu8trlowelp1a" path="res://sounds/cs50.wav" id="14_nbuvf"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_1k0gc")
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_o384a")
+volume_db = -10.0
+script = ExtResource("3_0tahm")
+pitch_rand = 0.05
+volume_rand = 0.3
+metadata/_custom_type_script = "uid://bgxo1vj3phnp7"
+
+[node name="ButtonOn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_rhkck")
+volume_db = -5.0
+script = ExtResource("3_0tahm")
+metadata/_custom_type_script = "uid://bgxo1vj3phnp7"
+
+[node name="ButtonOff" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_rhkck")
+volume_db = -5.0
+script = ExtResource("3_0tahm")
+metadata/_custom_type_script = "uid://bgxo1vj3phnp7"
+
+[node name="BlockMoveOn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_yaisj")
+volume_db = -10.0
+script = ExtResource("3_0tahm")
+pitch_rand = 0.1
+metadata/_custom_type_script = "uid://bgxo1vj3phnp7"
+
+[node name="BlockMoveOff" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_201by")
+volume_db = -10.0
+script = ExtResource("3_0tahm")
+pitch_rand = 0.1
+metadata/_custom_type_script = "uid://bgxo1vj3phnp7"
+
+[node name="Poof" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_201by")
+script = ExtResource("3_0tahm")
+pitch_rand = 0.2
+metadata/_custom_type_script = "uid://bgxo1vj3phnp7"
+
+[node name="Point" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_gicor")
+script = ExtResource("3_0tahm")
+pitch_rand = 0.05
+metadata/_custom_type_script = "uid://bgxo1vj3phnp7"
+
+[node name="Rubberduck" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_ydcbx")
+volume_db = -12.0
+script = ExtResource("3_0tahm")
+pitch_rand = 0.05
+metadata/_custom_type_script = "uid://bgxo1vj3phnp7"
+
+[node name="Chomp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_rhkck")
+volume_db = -12.0
+script = ExtResource("3_0tahm")
+metadata/_custom_type_script = "uid://bgxo1vj3phnp7"
+
+[node name="PushOscar" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_f4f00")
+volume_db = -12.0
+script = ExtResource("3_0tahm")
+pitch_rand = 0.1
+volume_rand = 0.1
+metadata/_custom_type_script = "uid://bgxo1vj3phnp7"
+
+[node name="Footstep" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_gicor")
+volume_db = -12.0
+script = ExtResource("3_0tahm")
+metadata/_custom_type_script = "uid://bgxo1vj3phnp7"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_tqr3v")
+volume_db = -20.0
+script = ExtResource("3_0tahm")
+loop = true
+
+[node name="CS50" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_nbuvf")
+script = ExtResource("3_0tahm")
+metadata/_custom_type_script = "uid://bgxo1vj3phnp7"
