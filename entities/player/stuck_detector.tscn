@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfobqaesm5pm8"]
+
+[ext_resource type="Script" uid="uid://cx0dqwkyf8t4" path="res://entities/player/stuck_detector.gd" id="1_38ejg"]
+
+[node name="StuckDetector" type="Area2D"]
+collision_mask = 24
+script = ExtResource("1_38ejg")

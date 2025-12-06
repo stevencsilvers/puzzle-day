@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2gc8brnscw8n"]
+
+[ext_resource type="Script" uid="uid://ccthfos5t8o6d" path="res://entities/player/element_detector.gd" id="1_hjdop"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n4l58"]
+radius = 9.0
+
+[node name="ElementDetector" type="Area2D"]
+collision_layer = 64
+collision_mask = 16
+script = ExtResource("1_hjdop")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_n4l58")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

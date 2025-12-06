@@ -1,0 +1,182 @@
+[gd_scene load_steps=24 format=3 uid="uid://b113sa0737di7"]
+
+[ext_resource type="Script" uid="uid://c4uooa1xrj0wi" path="res://entities/oscar/oscar.gd" id="1_5gfvv"]
+[ext_resource type="Texture2D" uid="uid://heponqin5mky" path="res://entities/oscar/oscar.png" id="2_ihbnq"]
+[ext_resource type="PackedScene" uid="uid://b7qiit41awuoq" path="res://entities/player/moving_block_detector.tscn" id="3_ihbnq"]
+[ext_resource type="Texture2D" uid="uid://c036qhyblr84u" path="res://effects/particles/box.png" id="4_pvgr3"]
+[ext_resource type="PackedScene" uid="uid://dfobqaesm5pm8" path="res://entities/player/stuck_detector.tscn" id="5_vdi6w"]
+[ext_resource type="Script" uid="uid://b0jjt7t51sjby" path="res://effects/particles/one_shot_effect.gd" id="6_6tewd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvgr3"]
+atlas = ExtResource("2_ihbnq")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdi6w"]
+atlas = ExtResource("2_ihbnq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tewd"]
+atlas = ExtResource("2_ihbnq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xaa6m"]
+atlas = ExtResource("2_ihbnq")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_alfuw"]
+atlas = ExtResource("2_ihbnq")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5gfvv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvgr3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vdi6w")
+}],
+"loop": false,
+"name": &"close",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tewd")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xaa6m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_alfuw")
+}],
+"loop": false,
+"name": &"open",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ihbnq"]
+size = Vector2(16, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5gfvv"]
+size = Vector2(12, 14)
+
+[sub_resource type="Gradient" id="Gradient_vdi6w"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.3220974, 0.70411986, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.7058824, 1, 1, 1, 0.47058824, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nxv51"]
+gradient = SubResource("Gradient_vdi6w")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pvgr3"]
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 15.0
+gravity = Vector3(0, 10, 0)
+scale_min = 0.19999999
+scale_max = 0.39999998
+color_ramp = SubResource("GradientTexture1D_nxv51")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6tewd"]
+radius = 2.0
+
+[sub_resource type="Gradient" id="Gradient_xaa6m"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.3220974, 0.70411986, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.7058824, 1, 1, 1, 0.47058824, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_m3ek8"]
+gradient = SubResource("Gradient_xaa6m")
+
+[sub_resource type="Curve" id="Curve_alfuw"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.4650037, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_thm50"]
+curve = SubResource("Curve_alfuw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fjjhe"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+direction = Vector3(0, -1, 0)
+spread = 180.0
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 10, 0)
+scale_min = 0.19999999
+scale_max = 0.79999995
+scale_curve = SubResource("CurveTexture_thm50")
+color_ramp = SubResource("GradientTexture1D_m3ek8")
+
+[node name="Oscar" type="CharacterBody2D" groups=["oscar"]]
+z_index = 80
+collision_layer = 256
+collision_mask = 446
+script = ExtResource("1_5gfvv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5gfvv")
+
+[node name="Area" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 190
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_ihbnq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_5gfvv")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, 10)
+target_position = Vector2(0, 2)
+collision_mask = 6
+
+[node name="MovingBlockDetector" parent="." instance=ExtResource("3_ihbnq")]
+position = Vector2(0, 10)
+
+[node name="AnimationTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Push" type="GPUParticles2D" parent="."]
+modulate = Color(0.7294118, 0.7137255, 0.69411767, 1)
+position = Vector2(0, 10)
+emitting = false
+texture = ExtResource("4_pvgr3")
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_pvgr3")
+
+[node name="StuckDetector" parent="." instance=ExtResource("5_vdi6w")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StuckDetector"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_6tewd")
+debug_color = Color(0.9735946, 0, 0.43625206, 0.41960785)
+
+[node name="Poof" type="GPUParticles2D" parent="."]
+z_index = 2
+position = Vector2(0, 3)
+emitting = false
+amount = 20
+texture = ExtResource("4_pvgr3")
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_fjjhe")
+script = ExtResource("6_6tewd")
+
+[connection signal="timeout" from="AnimationTimer" to="." method="_on_animation_timer_timeout"]

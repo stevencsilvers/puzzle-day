@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7qiit41awuoq"]
+
+[ext_resource type="Script" uid="uid://duxhgcq2jiwf7" path="res://entities/player/moving_block_detector.gd" id="1_w3m1u"]
+
+[node name="MovingBlockDetector" type="RayCast2D"]
+target_position = Vector2(0, 2)
+collision_mask = 16
+script = ExtResource("1_w3m1u")

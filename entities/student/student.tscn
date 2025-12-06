@@ -1,0 +1,293 @@
+[gd_scene load_steps=37 format=3 uid="uid://bqe3u28f4nbld"]
+
+[ext_resource type="Script" uid="uid://dxswkqrfyf6r2" path="res://entities/student/student.gd" id="1_n4l58"]
+[ext_resource type="Texture2D" uid="uid://b65t8wjdyux66" path="res://entities/student/student_cupcake_sheet.png" id="2_4me07"]
+[ext_resource type="Texture2D" uid="uid://om5g3txf4h36" path="res://entities/student/student_spritesheet.png" id="2_6nhlo"]
+[ext_resource type="PackedScene" uid="uid://d2gc8brnscw8n" path="res://entities/player/element_detector.tscn" id="3_c2u4e"]
+[ext_resource type="Script" uid="uid://dcxgyuui7v2yl" path="res://entities/student/student_sprite.gd" id="3_nxv51"]
+[ext_resource type="PackedScene" uid="uid://b7qiit41awuoq" path="res://entities/player/moving_block_detector.tscn" id="3_xrv8w"]
+[ext_resource type="PackedScene" uid="uid://dfobqaesm5pm8" path="res://entities/player/stuck_detector.tscn" id="6_xrv8w"]
+[ext_resource type="Script" uid="uid://bn3r7vulovmvd" path="res://entities/student/student_particles.gd" id="7_6nhlo"]
+[ext_resource type="Texture2D" uid="uid://c036qhyblr84u" path="res://effects/particles/box.png" id="7_rce2t"]
+[ext_resource type="Script" uid="uid://b0jjt7t51sjby" path="res://effects/particles/one_shot_effect.gd" id="10_m3ek8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48wvq"]
+atlas = ExtResource("2_4me07")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36oy6"]
+atlas = ExtResource("2_4me07")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wku7"]
+atlas = ExtResource("2_4me07")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u624m"]
+atlas = ExtResource("2_4me07")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_246g4"]
+atlas = ExtResource("2_6nhlo")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxv51"]
+atlas = ExtResource("2_6nhlo")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3ek8"]
+atlas = ExtResource("2_6nhlo")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4me07"]
+atlas = ExtResource("2_6nhlo")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thm50"]
+atlas = ExtResource("2_6nhlo")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mlyk"]
+atlas = ExtResource("2_6nhlo")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bqw08"]
+atlas = ExtResource("2_6nhlo")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_246g4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48wvq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_36oy6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wku7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u624m")
+}],
+"loop": true,
+"name": &"cupcake",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_246g4")
+}],
+"loop": false,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxv51")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3ek8")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4me07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_thm50")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mlyk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bqw08")
+}],
+"loop": true,
+"name": &"run",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n4l58"]
+radius = 4.0
+height = 14.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xrv8w"]
+radius = 3.0
+
+[sub_resource type="Gradient" id="Gradient_jebjq"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.3220974, 0.70411986, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.7058824, 1, 1, 1, 0.47058824, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6nhlo"]
+gradient = SubResource("Gradient_jebjq")
+
+[sub_resource type="Curve" id="Curve_m3ek8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.98909664, 0), -3.3836334, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4me07"]
+curve = SubResource("Curve_m3ek8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nxv51"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 8.0
+gravity = Vector3(0, 10, 0)
+scale_min = 0.099999994
+scale_max = 0.29999998
+scale_curve = SubResource("CurveTexture_4me07")
+color_ramp = SubResource("GradientTexture1D_6nhlo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m3ek8"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+direction = Vector3(0, -1, 0)
+spread = 20.0
+initial_velocity_min = 5.0
+initial_velocity_max = 15.0
+gravity = Vector3(0, 10, 0)
+scale_min = 0.099999994
+scale_max = 0.29999998
+color_ramp = SubResource("GradientTexture1D_6nhlo")
+
+[sub_resource type="Gradient" id="Gradient_sh0jw"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.3220974, 0.70411986, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.7058824, 1, 1, 1, 0.47058824, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_m3ek8"]
+gradient = SubResource("Gradient_sh0jw")
+
+[sub_resource type="Curve" id="Curve_4me07"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.53115267, 0.47071725), -0.92672586, -0.92672586, 0, 0, Vector2(1, 0.01064837), -0.91000473, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_thm50"]
+curve = SubResource("Curve_4me07")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4me07"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+direction = Vector3(0, -1, 0)
+spread = 180.0
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 10, 0)
+scale_min = 0.19999999
+scale_max = 0.79999995
+scale_curve = SubResource("CurveTexture_thm50")
+color_ramp = SubResource("GradientTexture1D_m3ek8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_thm50"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+direction = Vector3(0, -1, 0)
+spread = 180.0
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+gravity = Vector3(0, 10, 0)
+scale_min = 0.099999994
+scale_max = 0.29999998
+scale_curve = SubResource("CurveTexture_thm50")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = 0.99999994
+
+[node name="Student" type="CharacterBody2D" groups=["student"]]
+z_index = 100
+collision_layer = 2
+collision_mask = 409
+script = ExtResource("1_n4l58")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, 3)
+sprite_frames = SubResource("SpriteFrames_246g4")
+animation = &"fall"
+offset = Vector2(1, -2)
+script = ExtResource("3_nxv51")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 9)
+shape = SubResource("CapsuleShape2D_n4l58")
+
+[node name="MovingBlockDetector" parent="." instance=ExtResource("3_xrv8w")]
+position = Vector2(0, 16)
+
+[node name="ElementDetector" parent="." instance=ExtResource("3_c2u4e")]
+position = Vector2(0, 9)
+
+[node name="StuckDetector" parent="." instance=ExtResource("6_xrv8w")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StuckDetector"]
+position = Vector2(0, 7)
+shape = SubResource("CircleShape2D_xrv8w")
+debug_color = Color(0.9735946, 0, 0.43625206, 0.41960785)
+
+[node name="StudentParticles" type="Node2D" parent="."]
+z_index = -1
+script = ExtResource("7_6nhlo")
+
+[node name="Run" type="GPUParticles2D" parent="StudentParticles"]
+position = Vector2(0, 17)
+emitting = false
+amount = 12
+texture = ExtResource("7_rce2t")
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_nxv51")
+
+[node name="Jump" type="GPUParticles2D" parent="StudentParticles"]
+z_index = 2
+position = Vector2(0, 17)
+emitting = false
+amount = 12
+texture = ExtResource("7_rce2t")
+one_shot = true
+explosiveness = 1.0
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_m3ek8")
+script = ExtResource("10_m3ek8")
+
+[node name="Poof" type="GPUParticles2D" parent="StudentParticles"]
+z_index = 2
+position = Vector2(0, 9)
+emitting = false
+amount = 20
+texture = ExtResource("7_rce2t")
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_4me07")
+script = ExtResource("10_m3ek8")
+
+[node name="Confetti" type="GPUParticles2D" parent="StudentParticles"]
+z_index = 2
+position = Vector2(0, 7)
+emitting = false
+amount = 20
+texture = ExtResource("7_rce2t")
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+trail_enabled = true
+trail_lifetime = 0.15000000000000002
+process_material = SubResource("ParticleProcessMaterial_thm50")
+script = ExtResource("10_m3ek8")
