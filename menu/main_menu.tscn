@@ -1,0 +1,232 @@
+[gd_scene load_steps=22 format=3 uid="uid://cpy7cx4tnmupb"]
+
+[ext_resource type="Script" uid="uid://cb1s8blhxkwsn" path="res://menu/main_menu.gd" id="1_chmv6"]
+[ext_resource type="Script" uid="uid://c5dxom522a855" path="res://menu/transition.gd" id="2_jc45y"]
+[ext_resource type="PackedScene" uid="uid://cmdhe4ixc7fla" path="res://managers/level_manager.tscn" id="4_1x3cv"]
+[ext_resource type="Texture2D" uid="uid://0dvprpwg44hi" path="res://menu/puzzleday.png" id="5_s8mfa"]
+[ext_resource type="FontFile" uid="uid://b4ka15wi1o76i" path="res://menu/pansyhand.ttf" id="5_youj7"]
+[ext_resource type="Texture2D" uid="uid://b65t8wjdyux66" path="res://entities/student/student_cupcake_sheet.png" id="6_0tw43"]
+[ext_resource type="Texture2D" uid="uid://dndkekc14i5o4" path="res://entities/duck/duck_cupcake_sheet.png" id="7_youj7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_youj7"]
+atlas = ExtResource("6_0tw43")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5uyn"]
+atlas = ExtResource("6_0tw43")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qj3r"]
+atlas = ExtResource("6_0tw43")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5y3h"]
+atlas = ExtResource("6_0tw43")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k17ts"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_youj7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5uyn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qj3r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5y3h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k17ts"]
+atlas = ExtResource("7_youj7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vfm6"]
+atlas = ExtResource("7_youj7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23ste"]
+atlas = ExtResource("7_youj7")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b06p2"]
+atlas = ExtResource("7_youj7")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lb3k0"]
+atlas = ExtResource("7_youj7")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5urqu"]
+atlas = ExtResource("7_youj7")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnl5v"]
+atlas = ExtResource("7_youj7")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkuil"]
+atlas = ExtResource("7_youj7")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pfmj8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k17ts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1vfm6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23ste")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b06p2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lb3k0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5urqu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bnl5v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkuil")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="MainMenu" type="Control" groups=["main_menu"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_chmv6")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Transition" type="ColorRect" parent="."]
+z_index = 2000
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+script = ExtResource("2_jc45y")
+
+[node name="ThisIsCS50" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("5_youj7")
+theme_override_font_sizes/normal_font_size = 16
+text = "This is CS50"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelSelect" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelSelect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HSplitContainer" type="HSplitContainer" parent="LevelSelect/MarginContainer"]
+layout_mode = 2
+dragging_enabled = false
+dragger_visibility = 1
+
+[node name="Logo" type="TextureRect" parent="LevelSelect/MarginContainer/HSplitContainer"]
+layout_mode = 2
+texture = ExtResource("5_s8mfa")
+stretch_mode = 2
+
+[node name="Levels" type="VBoxContainer" parent="LevelSelect/MarginContainer/HSplitContainer"]
+layout_mode = 2
+
+[node name="Level1" type="Button" parent="LevelSelect/MarginContainer/HSplitContainer/Levels"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_youj7")
+theme_override_font_sizes/font_size = 16
+text = "level 1"
+
+[node name="Credits" type="RichTextLabel" parent="LevelSelect/MarginContainer"]
+modulate = Color(0.47058824, 0.47058824, 0.47058824, 1)
+layout_mode = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("5_youj7")
+text = "Made by Steven for CS50 Final Project"
+scroll_active = false
+vertical_alignment = 2
+
+[node name="StudentAnim" type="AnimatedSprite2D" parent="LevelSelect"]
+position = Vector2(35, 19)
+sprite_frames = SubResource("SpriteFrames_k17ts")
+autoplay = "default"
+frame_progress = 0.93654096
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="LevelSelect"]
+position = Vector2(200, 40)
+sprite_frames = SubResource("SpriteFrames_pfmj8")
+autoplay = "default"
+frame_progress = 0.98202693
+
+[node name="Quit" type="Button" parent="LevelSelect"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 147.0
+offset_right = 194.0
+offset_bottom = 169.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("5_youj7")
+theme_override_font_sizes/font_size = 16
+text = "quit"
+
+[node name="LevelManager" parent="." instance=ExtResource("4_1x3cv")]
+
+[connection signal="pressed" from="LevelSelect/Quit" to="." method="_on_quit_pressed"]
